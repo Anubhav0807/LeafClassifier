@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf Classifier</title>
+</head>
+<body>
+    <div>Leaf Identification Image Model</div>
+    <button type="button" onclick="init()">Start</button>
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        // More API functions here:
+        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+        // the link to your model provided by Teachable Machine export panel
+        const URL = {
+            A: "./modelA/",
+            B: "./modelB/",
+        };
+
+        let model, webcam, labelContainer, maxPredictions;
+        let lastIdx, lastClass;
+
+        // Load the image model and setup the webcam
+        async function init() {
+            const modelURL = {
+                A: URL.A + "model.json",
+                B: URL.B + "model.json",
+            };
+            const metadataURL = {
+                A: URL.A + "metadata.json",
+                B: URL.B + "metadata.json",
+            };
+
+            // load the model and metadata
+            // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+            // or files from your local hard drive
+            // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+            model = {
+                A: await tmImage.load(modelURL.A, metadataURL.A),
+                B: await tmImage.load(modelURL.B, metadataURL.B),
+            };
+            maxPredictions = {
+                A: model.A.getTotalClasses(),
+                B: model.B.getTotalClasses(),
+            };
+
+            // Convenience function to setup a webcam
+            const flip = true; // whether to flip the webcam
+            webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+            await webcam.setup(); // request access to the webcam
+            await webcam.play();
+            window.requestAnimationFrame(loop);
+
+            // append elements to the DOM
+            document.getElementById("webcam-container").appendChild(webcam.canvas);
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions.A + maxPredictions.B; i++) { // and class labels
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        async function loop() {
+            webcam.update(); // update the webcam frame
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        // run the webcam image through the image model
+        async function predict() {
+            // predict can take in an image, video or canvas html element
+            const predictionA = await model.A.predict(webcam.canvas);
+            for (let i=0; i < maxPredictions.A; i++) {
+                labelContainer.childNodes[i].innerHTML = predictionA[i].className + ": " + predictionA[i].probability.toFixed(2);
+            }
+            if (predictionA[0].probability < 0.8) {
+                labelContainer.childNodes[0].style.backgroundColor = 'white';
+                labelContainer.childNodes[1].style.backgroundColor = 'red';
+                return;
+            } else {
+                labelContainer.childNodes[0].style.backgroundColor = 'lightgreen';
+                labelContainer.childNodes[1].style.backgroundColor = 'white';
+            }
+
+            const predictionB = await model.B.predict(webcam.canvas);
+            let maxProb = 0;
+            let curClass;
+            let curIdx;
+            for (let i = 0; i < maxPredictions.B; i++) {
+                labelContainer.childNodes[i+maxPredictions.A].innerHTML = predictionB[i].className + ": " + predictionB[i].probability.toFixed(2);
+                if (predictionB[i].probability > maxProb) {
+                    maxProb = predictionB[i].probability;
+                    curClass = predictionB[i].className;
+                    curIdx = i;
+                }
+            }
+            if (curClass !== lastClass && maxProb > 0.8) {
+                if (lastIdx !== undefined)
+                    labelContainer.childNodes[lastIdx + maxPredictions.A].style.backgroundColor = 'white';
+                labelContainer.childNodes[curIdx + maxPredictions.A].style.backgroundColor = 'yellow';
+                lastClass = curClass;
+                lastIdx = curIdx;
+                displayDetails(curClass);
+            }
+        }
+
+        async function displayDetails(leaf) {
+            console.log(JSON.stringify(await describe(leaf)));
+        }
+    </script>
+
+</body>
+</html>
