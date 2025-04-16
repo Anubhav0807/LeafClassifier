@@ -9,8 +9,14 @@
 <body>
     <h1>Leaf Identification Image Model</h1>
     <div style="display: flex;">
-        <div id="webcam-container" class="container">
-            <button type="button" onclick="init(event)">Start Webcam</button>
+        <div style="margin-left: 10px;">
+            <div id="webcam-container" class="container">
+                <button type="button" onclick="init(event)">Start Webcam</button>
+            </div>
+            <br>
+            <label for="scan">Scanning progress:</label>
+            <br>
+            <progress id="scan" value="0" max="100"></progress>
         </div>
         <div id="details-container">
         </div>

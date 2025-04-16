@@ -65,6 +65,9 @@ async function loop() {
 
 // run the webcam image through the image model
 async function predict() {
+    const progressBar = document.getElementById('scan');
+    const delay = 2; // for consistency
+
     // predict can take in an image, video or canvas html element
     const predictionA = await model.A.predict(webcam.canvas);
     if (predictionA[0].probability < 0.8) return;
@@ -82,8 +85,12 @@ async function predict() {
     }
 
     curTime = new Date().getTime();
-    if (curIdx === lastFrameIdx) {
-        if (curTime - startTime > 2000) { // 2 sec delay for consistency
+    if (curIdx === lastIdx) {
+        startTime = curTime;
+    } else if (curIdx === lastFrameIdx) {
+        let diff = curTime - startTime;
+        progressBar.value = Number.parseInt(diff / (delay * 10)).toString();
+        if (diff > delay * 1000) {
             startTime = curTime;
             if (curIdx !== lastIdx) {
                 lastClass = curClass;
