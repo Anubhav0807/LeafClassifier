@@ -1,6 +1,7 @@
 #webcam-container {
     height: 204px;
     width: 204px;
+    margin-left: 10px;
     border: 2px solid black;
     border-radius: 5px;
     background-color: grey;
@@ -16,4 +17,10 @@
 
 #details-container {
     margin-left: 10%;
+    width: 60%;
+}
+
+img {
+    float: right;
+    height: 250px;
 }

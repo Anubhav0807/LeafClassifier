@@ -83,7 +83,7 @@ async function predict() {
 
     curTime = new Date().getTime();
     if (curIdx === lastFrameIdx) {
-        if (curTime - startTime > 1000) {
+        if (curTime - startTime > 2000) { // 2 sec delay for consistency
             startTime = curTime;
             if (curIdx !== lastIdx) {
                 lastClass = curClass;
@@ -131,15 +131,16 @@ async function renderDetails(leaf) {
     // console.log("API called");
     const detailsContainer = document.getElementById('details-container');
     const details = await describe(leaf);
-    const leafName = details.name.replace('_', ' ');
+    const latinName = details.name.replace('_', ' ');
     const about = details.about;
     const characteristics = details.about.leaf_characteristics;
 
     detailsContainer.innerHTML = `
-        <h1>${leafName} found!</h1>
+        <h1>${about.common_name} found!</h1>
         <p>${about.description}</p>
         <img src="${about.imageURL}" style="float: right;">
         <ul>
+            <li><strong>Latin Name:</strong> ${latinName}</li>
             <li><strong>Shape:</strong> ${characteristics.shape}</li>
             <li><strong>Size:</strong> ${characteristics.size}</li>
             <li><strong>Texture:</strong> ${characteristics.texture}</li>
@@ -149,7 +150,7 @@ async function renderDetails(leaf) {
         </ul>
         <p>
             ${about.note}<br>
-            Click <a href="${about.wikiURL}" target="_blank">here</a> to visit the wiki page for ${leafName}
+            Click <a href="${about.wikiURL}" target="_blank">here</a> to visit the wiki page for ${about.common_name}
         </p>
     `;
 
