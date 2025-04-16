@@ -1,0 +1,19 @@
+#webcam-container {
+    height: 204px;
+    width: 204px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 2px dashed black !important;
+    background-color: lightgrey !important;
+}
+
+#details-container {
+    margin-left: 10%;
+}
