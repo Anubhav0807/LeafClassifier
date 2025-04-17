@@ -70,7 +70,11 @@ async function predict() {
 
     // predict can take in an image, video or canvas html element
     const predictionA = await model.A.predict(webcam.canvas);
-    if (predictionA[0].probability < 0.8) return;
+    curTime = new Date().getTime();
+    if (predictionA[0].probability < 0.8) {
+        startTime = curTime;
+        return; // if not a leaf, no need to classify it
+    }
 
     const predictionB = await model.B.predict(webcam.canvas);
     let maxProb = 0;
@@ -84,9 +88,9 @@ async function predict() {
         }
     }
 
-    curTime = new Date().getTime();
     if (curIdx === lastIdx) {
         startTime = curTime;
+        progressBar.value = 100;
     } else if (curIdx === lastFrameIdx) {
         let diff = curTime - startTime;
         progressBar.value = Number.parseInt(diff / (delay * 10)).toString();
