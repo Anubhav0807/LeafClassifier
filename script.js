@@ -1,4 +1,4 @@
-const apiUrl = "https://leaf-description.vercel.app/leaf";
+const apiUrl = "https://leaf-description.vercel.app";
 
 // More API functions here:
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
@@ -55,6 +55,9 @@ async function init(event) {
 
     // Initialize the variables
     curTime = startTime = new Date().getTime();
+
+    // Send a wake up call to the API to initiate cold start
+    fetch(apiUrl); // Need not wait or store
 }
 
 async function loop() {
@@ -111,7 +114,7 @@ async function predict() {
 // Fetch list of leaves
 async function getLeaves() {
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(`${apiUrl}/leaf`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -126,7 +129,7 @@ async function getLeaves() {
 // Fetch description of a specific leaf
 async function describe(leaf) {
     try {
-        const response = await fetch(`${apiUrl}/${leaf}`);
+        const response = await fetch(`${apiUrl}/leaf/${leaf}`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -149,7 +152,7 @@ async function renderDetails(leaf) {
     detailsContainer.innerHTML = `
         <h1>${about.common_name} found!</h1>
         <p>${about.description}</p>
-        <img src="${about.imageURL}" style="float: right;">
+        <img class="leaf" src="${about.imageURL}" style="float: right;">
         <ul>
             <li><strong>Latin Name:</strong> ${latinName}</li>
             <li><strong>Shape:</strong> ${characteristics.shape}</li>
