@@ -1,28 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Leaf Classifier</title>
-</head>
-<body>
-    <h1>Leaf Identification Image Model</h1>
-    <div style="display: flex;">
-        <div style="margin-left: 10px;">
-            <div id="webcam-container" class="container">
-                <button type="button" onclick="init(event)">Start Webcam</button>
-            </div>
-            <br>
-            <label for="scan">Scanning progress:</label>
-            <br>
-            <progress id="scan" value="0" max="100"></progress>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Leafipedia</title>
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .content h1,
+            .content h3 {
+                font-style: italic;
+            }
+
+            .background {
+                background-image: url("images/leaf-bg.jpeg");
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                transition: filter 1s ease-in-out;
+                animation: blur 500ms forwards;
+            }
+
+            .logo {
+                width: 200px;
+                height: 150;
+                border-radius: 20px;
+            }
+
+            .content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                color: rgb(1, 63, 1);
+                filter: none;
+            }
+
+            .continue-btn {
+                color: rgb(1, 63, 1);
+                background-color: rgb(109, 239, 195);
+                padding: 5px;
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+
+            .continue-btn:hover {
+                background-color: aquamarine;
+                cursor: pointer;
+            }
+
+            @keyframes blur {
+                0% {
+                    filter: blur(0px);
+                }
+                100% {
+                    filter: blur(16px);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="background"></div>
+
+        <div class="content">
+            <img class="logo" src="images/logo.jpg" alt="logo" />
+            <h1>Welcome to Leafipedia 🍃</h1>
+            <h3>
+                "Every <span style="color: yellowgreen;">Leaf</span>
+                Tells a Story — Discover the Nature Within."
+            </h3>
+            <h3>To get information for more leaves click</h3>
+            <button class="continue-btn" onclick="handleClick()">CONTINUE</button>
         </div>
-        <div id="details-container">
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="script.js"></script>
-</body>
+
+        <script>
+            function handleClick() {
+                window.location = "identify.html";
+            }
+        </script>
+    </body>
 </html>
