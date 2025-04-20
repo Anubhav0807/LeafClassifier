@@ -1,25 +1,109 @@
-#webcam-container {
-    height: 204px;
-    width: 204px;
-    border: 2px solid black;
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    visibility: hidden;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(10deg, rgb(17, 142, 17), rgb(117, 203, 117));
+    width: 100%;
+}
+
+header > nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+header img {
+    margin: 2px 5px 2px 5px;
+    height: 50px;
     border-radius: 5px;
-    background-color: grey;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+header a:hover {
+    color: yellow;
+}
+
+/* Footer */
+footer {
+    margin-top: 15px;
+}
+
+footer .pan1 {
+    padding: 20px;
+    height: 30px;
+    background-color: darkgreen;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: font-size 100ms ease-in-out;
 }
 
-.container {
-    border: 2px dashed black !important;
-    background-color: lightgrey !important;
+footer .pan1:hover {
+    font-size: 1rem;
 }
 
-#details-container {
-    margin-left: 10%;
-    width: 60%;
+footer .pan2 {
+    background: linear-gradient(10deg, rgb(17, 142, 17), rgb(117, 203, 117));
+    color: rgb(6, 67, 6);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-img.leaf {
-    float: right;
-    height: 250px;
+footer ul {
+    margin-top: 20px;
+}
+
+footer a {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    color: darkgreen;
+}
+
+footer .copyrights {
+    padding: 20px;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(1, 59, 1);
+}
+
+.background {
+    background-image: url("images/leaf-bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.blur {
+    animation: blur 1s forwards;
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(32px);
+    }
 }

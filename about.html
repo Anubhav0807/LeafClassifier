@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        main {
+            flex: 1;
+            position: relative;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 25px 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 220px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-icon {
+            font-size: 64px;
+            color: #2d5a27;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .details {
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .team-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <div class="background"></div>
+
+    <main>
+        <div class="card">
+            <i class="fas fa-user-circle team-icon"></i>
+            <div class="name">Sandhya P</div>
+            <div class="details">Faculty</div>
+            <div class="details">Department: SCOPE</div>
+            <div class="details">Contact No.: 7299480949</div>
+        </div>
+
+        <div class="team-container">
+            <div class="card">
+                <i class="fas fa-user-circle team-icon"></i>
+                <div class="name">Adityaraj Shrivastava</div>
+                <div class="details">Reg No: 23BCE1968</div>
+                <div class="details">Department: SCOPE</div>
+                <div class="details">VIT Chennai</div>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-circle team-icon"></i>
+                <div class="name">Anubhav Jha</div>
+                <div class="details">Reg No: 23BCE1976</div>
+                <div class="details">Department: SCOPE</div>
+                <div class="details">VIT Chennai</div>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-circle team-icon"></i>
+                <div class="name">Shivansh Ranjan</div>
+                <div class="details">Reg No: 23BCE1226</div>
+                <div class="details">Department: SCOPE</div>
+                <div class="details">VIT Chennai</div>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-circle team-icon"></i>
+                <div class="name">Yerav Aaron Charan </div>
+                <div class="details">Reg No: 23BCE1725</div>
+                <div class="details">Department: SCOPE</div>
+                <div class="details">VIT Chennai</div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+    <script src="loadTemplate.js"></script>
+</body>
+</html>

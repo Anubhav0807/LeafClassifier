@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Quiz on Nature</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
+        <link rel="stylesheet" href="styles.css" />
+        <style>
+            .quiz-container {
+                max-width: 800px;
+                margin: 40px auto;
+                background: rgba(255, 255, 255, 0.7);
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                position: relative;
+                z-index: 1;
+            }
+
+            h1 {
+                text-align: center;
+                color: #2e7d32;
+                margin-bottom: 20px;
+            }
+
+            .question {
+                margin-bottom: 20px;
+            }
+
+            .question p {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .options {
+                margin-left: 15px;
+            }
+
+            .result {
+                text-align: center;
+                margin-top: 30px;
+                font-size: 1.3em;
+                font-weight: bold;
+            }
+
+            button {
+                display: block;
+                margin: 30px auto;
+                padding: 10px 20px;
+                background-color: #43a047;
+                border: none;
+                color: white;
+                font-size: 16px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #2c6e2f;
+            }
+
+            img {
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <header></header>
+
+        <div class="background"></div>
+        <div class="main-container"></div>
+
+        <div class="quiz-container">
+            <h1>🌿 Nature & Leaves Quiz</h1>
+            <form id="quizForm">
+                <div class="question">
+                    <p>1. What pigment gives leaves their green color?</p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q1" value="a" />
+                            Carotene</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q1" value="b" />
+                            Anthocyanin</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q1" value="c" />
+                            Chlorophyll</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q1" value="d" />
+                            Xanthophyll</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>
+                        2. What process occurs in the leaves to produce food for
+                        the plant?
+                    </p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q2" value="a" />
+                            Photosynthesis</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q2" value="b" />
+                            Respiration</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q2" value="c" />
+                            Fermentation</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q2" value="d" />
+                            Digestion</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>
+                        3. What type of leaf has multiple leaflets attached to
+                        one stem?
+                    </p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q3" value="a" />
+                            Compound</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q3" value="b" />
+                            Simple</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q3" value="c" />
+                            Lobed</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q3" value="d" />
+                            Needle</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. Which part of the leaf regulates gas exchange?</p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q4" value="a" />
+                            Stomata</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q4" value="b" />
+                            Cuticle</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q4" value="c" />
+                            Mesophyll</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q4" value="d" />
+                            Veins</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>
+                        5. What is the waxy coating on leaves that helps prevent
+                        water loss?
+                    </p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q5" value="a" />
+                            Cuticle</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q5" value="b" />
+                            Chloroplast</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q5" value="c" />
+                            Stoma</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q5" value="d" />
+                            Phloem</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>6. What are the veins in leaves responsible for?</p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q6" value="a" />
+                            Transporting water and nutrients</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q6" value="b" /> Storing
+                            energy</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q6" value="c" />
+                            Reproduction</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q6" value="d" />
+                            Reflecting sunlight</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>7. Which tree is known for having lobed leaves?</p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q7" value="a" />
+                            Pine</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q7" value="b" />
+                            Maple</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q7" value="c" />
+                            Oak</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q7" value="d" />
+                            Birch</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>8. In autumn, why do leaves change color?</p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q8" value="a" />
+                            Chlorophyll breaks down</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q8" value="b" /> More
+                            chlorophyll is produced</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q8" value="c" /> Leaves
+                            produce sugar</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q8" value="d" /> Days get
+                            shorter</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>9. Which gas do leaves absorb during photosynthesis?</p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q9" value="a" /> Carbon
+                            Dioxide</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q9" value="b" />
+                            Oxygen</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q9" value="c" />
+                            Nitrogen</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q9" value="d" />
+                            Hydrogen</label
+                        >
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>
+                        10. What part of the leaf is primarily responsible for
+                        photosynthesis?
+                    </p>
+                    <div class="options">
+                        <label
+                            ><input type="radio" name="q10" value="a" />
+                            Epidermis</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q10" value="b" />
+                            Mesophyll</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q10" value="c" />
+                            Phloem</label
+                        ><br />
+                        <label
+                            ><input type="radio" name="q10" value="d" />
+                            Veins</label
+                        >
+                    </div>
+                </div>
+
+                <button type="button" onclick="checkAnswers()">
+                    Submit Quiz
+                </button>
+            </form>
+
+            <div id="result" class="result"></div>
+        </div>
+
+        <footer></footer>
+        <script src="loadTemplate.js"></script>
+
+        <script>
+            function checkAnswers() {
+                const answers = {
+                    q1: "c",
+                    q2: "a",
+                    q3: "a",
+                    q4: "a",
+                    q5: "a",
+                    q6: "a",
+                    q7: "c",
+                    q8: "a",
+                    q9: "a",
+                    q10: "b",
+                };
+
+                let score = 0;
+                for (let q in answers) {
+                    const selected = document.querySelector(
+                        `input[name="${q}"]:checked`
+                    );
+                    if (selected && selected.value === answers[q]) {
+                        score++;
+                    }
+                }
+
+                let message = "";
+                if (score === 10) {
+                    message = "🌟 Perfect! You're a nature genius!";
+                } else if (score >= 7) {
+                    message = "🌿 Great job! You really know your leaves!";
+                } else if (score >= 4) {
+                    message = "🍃 Not bad! Keep exploring nature!";
+                } else {
+                    message = "🍂 Keep learning! Nature has much to teach!";
+                }
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `You scored ${score}/10<br>${message}`;
+            }
+        </script>
+    </body>
+</html>

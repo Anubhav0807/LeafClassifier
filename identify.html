@@ -1,28 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Leaf Classifier</title>
-</head>
-<body>
-    <h1>Leaf Identification Image Model</h1>
-    <div style="display: flex;">
-        <div style="margin-left: 10px;">
-            <div id="webcam-container" class="container">
-                <button type="button" onclick="init(event)">Start Webcam</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
+        <title>Identify Leaf</title>
+        <style>
+            #webcam-container {
+                height: 204px;
+                width: 204px;
+                border: 2px solid black;
+                border-radius: 5px;
+                background-color: grey;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container {
+                border: 2px dashed black !important;
+                background-color: lightgrey !important;
+            }
+
+            #details-container {
+                margin-left: 10%;
+                width: 60%;
+            }
+
+            #details-container a {
+                color: blue;
+            }
+
+            #details-container a:hover {
+                color: red;
+            }
+
+            img.leaf {
+                float: right;
+                height: 250px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <header></header>
+        <div class="background"></div>
+        <h1>🌿Leaf Identification Model</h1>
+        <div style="display: flex">
+            <div style="margin-left: 45px">
+                <div id="webcam-container" class="container">
+                    <button type="button" onclick="init(event)">
+                        Start Webcam
+                    </button>
+                </div>
+                <br />
+                <label for="scan">Scanning progress:</label>
+                <br />
+                <progress id="scan" value="0" max="100"></progress>
             </div>
-            <br>
-            <label for="scan">Scanning progress:</label>
-            <br>
-            <progress id="scan" value="0" max="100"></progress>
+            <div id="details-container"></div>
         </div>
-        <div id="details-container">
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="script.js"></script>
-</body>
+        <footer></footer>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+        <script src="script.js"></script>
+        <script src="loadTemplate.js"></script>
+    </body>
 </html>

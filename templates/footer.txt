@@ -1,0 +1,39 @@
+<div class="pan1" onclick="window.location='#'">Back to Top</div>
+
+<div class="pan2">
+    <ul>
+        <p>Get to know Us</p>
+        <a>Careers</a>
+        <a>Blog</a>
+        <a>About Leafipedia</a>
+        <a>Investor Relations</a>
+        <a>Leaf recognition Devices</a>
+        <a>Leaf Science</a>
+    </ul>
+    <ul>
+        <p>Leaf Identification Guide</p>
+        <a>Educational Articles</a>
+        <a>Leaf Anatomy 101</a>
+        <a>Research Publications </a>
+        <a>FAQs</a>
+        <a>Glossary of Leaf Terms</a>
+    </ul>
+    <ul>
+        <p>Leaf Scanner App</p>
+        <a>AI Leaf Matcher</a>
+        <a>API for Developers</a>
+        <a>Leaf Database Access</a>
+        <a>Plant Disease Checker</a>
+        <a>Leafipedia Labs</a>
+    </ul>
+    <ul>
+        <p>Contact Us</p>
+        <a>Support Center</a>
+        <a>Community Forum</a>
+        <a>Subscribe to Newsletter</a>
+        <a>Collaborate with Us</a>
+        <a>Follow Us on Social Media</a>
+    </ul>
+</div>
+
+<div class="copyrights"></div>
